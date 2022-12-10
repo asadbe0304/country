@@ -1,0 +1,32 @@
+:root{
+  --bg-body: #202C36;
+  --bg-header: #2B3844;
+  --title: #fff;
+  --load: #000;
+}
+
+.dark{
+  --bg-body: #f2f2f2;
+  --bg-header: #fff;
+  --title: #111517;
+  --load: #c2c2c2;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito-sans", sans-serif;
+  background: var(--bg-body);
+}
+
+.container{
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1440px;
+}
