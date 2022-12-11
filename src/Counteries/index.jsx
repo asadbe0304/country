@@ -18,7 +18,7 @@ const [data, setData]=useState([])
 
 
   // console.log(data.data);
-  const { flag, population, capital, nativeName, subregion, region, name }=data;
+  const { flag, population, capital, nativeName, subregion, currency, lang, region, name }=data;
   return (
     <>
       {/* <NavLink> */}
@@ -50,8 +50,8 @@ const [data, setData]=useState([])
                   <li className="items">
                     <ul className="list__in">
                     <li className="item in__item">Top level Domains : be</li>
-                    <li className="item in__item">Currencies: Euro</li>
-                    <li className="item in__item">Language: Dutch, French, German</li>
+                    <li className="item in__item">Currencies: {currency}</li>
+                    <li className="item in__item">Language: {lang} French, German</li>
                     </ul>
                   </li>
                 </ul>

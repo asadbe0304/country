@@ -1,15 +1,12 @@
 import React from "react";
 import Icon from "./../../assets/icon.svg";
+import Sun from "./../../assets/Group 3.svg"
 import { useState, useEffect } from "react";
- import {NavLink} from "react-router-dom"
-// import Intro from "./../Main/index";
 
-// import BsFillSunFill from "react-icons"
 import "./style.scss";
 
 const index = () => {
-  const [theme, setTheme] = useState(
-  localStorage.getItem("theme")|| "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
   const toggleTheme = () => {
     if (theme === "dark") {
       setTheme("light");
@@ -18,7 +15,7 @@ const index = () => {
     }
   };
   useEffect(() => {
-      localStorage.setItem("theme", theme);
+    localStorage.setItem("theme", theme);
     document.body.className = theme;
   }, [theme]);
   return (
@@ -29,15 +26,17 @@ const index = () => {
             <a href="#link" className="logo">
               Where in the world?
             </a>
-            <NavLink to="/intro" className="btn">Counteries</NavLink>
             <div className="dark__mode" onClick={toggleTheme}>
-              <img className="icon" src={Icon} alt="icon" />
+              <img
+                className="icon"
+                src={Sun}
+                alt="icon"
+              />
               Dark Mode
             </div>
           </div>
         </div>
       </header>
-      {/* <Intro/> */}
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 import { useState, useEffect } from "react";
-import search from "./../../assets/icon-search-white.svg";
+import searchs from "./../../assets/icon-search-white.svg";
 import shape from "./../../assets/Shape.svg";
 import { API } from "./../../api/api";
 import Card from "./../ui/Card";
@@ -10,16 +10,37 @@ import Card from "./../ui/Card";
 const index = () => {
   // console.log(API)
   const [data, setData] = useState([]);
-  const [loading, setLoad] = useState(false);
+  const [sorts, setSort] = useState([]);
+  // const [search, setSearch]=useState('')
+   const [loading, setLoad] = useState(false);
+
+
 
   useEffect(() => {
+
+
     API.getAll().then((result) => {
       setData(result.data);
       if (result.data) {
         setLoad(true);
+
+        result.data.forEach((e)=>{
+          if(!sorts.includes(e.region)){
+        sorts.push(e.region)
+        setSort(sorts)
+          }
+        })
       }
     });
   }, []);
+
+const filterCountry = (country)=>{
+  API.filterCountry(country).then((result)=> setData(result.data))
+}
+
+const searchByName = (text)=>{
+  API.searchByName(text).then((result)=> setData(result.data))
+}
 
   if (!loading) {
     return (
@@ -49,33 +70,41 @@ const index = () => {
           <div className="hero">
             <div className="hero__top">
               <label htmlFor="" className="label-form">
-                <img src={search} alt="icon" />
+                <img src={searchs} alt="icon" />
                 <input
                   type="text"
                   className="input"
+                  // value={search}
+                  onChange={(e)=>{
+                    // setSearch(e.target.value)
+                    searchByName(e.target.value)
+                  }}
                   placeholder="Search for a country…"
                 />
               </label>
-              <ul className="drop">
-                <li className="drop__item">
+              <select className="drop__inner" onChange={(e)=>{
+                filterCountry(e.target.value)
+              }}>
+                <option value="Filter" selected disabled>
                   Filter by Region
-                  <img src={shape} className="shape" alt="" />
-                  <ul className="drop__inner">
-                    <li className="inner__item">Africa</li>
-                    <li className="inner__item">America</li>
-                    <li className="inner__item">Asia</li>
-                    <li className="inner__item">Europe</li>
-                    <li className="inner__item">Oceania</li>
-                  </ul>
-                </li>
-              </ul>
+                </option>
+                {
+                  sorts.sort().map((item)=>{
+                    return(
+                      <option key={item} value={item}>
+                        {item}
+                      </option>
+                    );
+                  })
+                }
+              </select>
             </div>
             <div className="hero__bottom">
               {data.length > 0
                 ? data.map((el) => {
-                    return <Card data={el} />;
+                    return <Card data={el} key={el.name} />;
                   })
-                : "<h3>Not found </h3>"}
+                : "Not found"}
             </div>
           </div>
         </div>
