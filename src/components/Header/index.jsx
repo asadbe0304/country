@@ -32,7 +32,7 @@ const index = () => {
                 src={Sun}
                 alt="icon"
               />
-              Dark Mode
+              Dark
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ const [data, setData]=useState([])
             <div className="read__countries">
               <img className="flags" src={flag} alt="flag" />
               <div className="read__information">
-                <div>
+                <div className="title_box">
                   <h2 className="title">{name}</h2>
                 </div>
                 <ul className="list">

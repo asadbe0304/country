@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import searchs from "./../../assets/icon-search-white.svg";
 import shape from "./../../assets/Shape.svg";
 import { API } from "./../../api/api";
-import Card from "./../ui/Card";
+import Card from "../UI/Card";
 // import { flushSync } from "react-dom";
 
 const index = () => {
