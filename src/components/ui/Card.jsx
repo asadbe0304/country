@@ -4,7 +4,6 @@ import {NavLink,  Link } from "react-router-dom";
 const Card = ({data: {flag, population, region, capital, name}}) => {
   return (
     <>
-    
       <Link to={`/intro/${name}`}>
         <div className="card">
           <img src={flag} className="card__img" alt="images" />
