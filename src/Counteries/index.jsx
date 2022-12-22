@@ -14,7 +14,7 @@ const [data, setData]=useState([])
   const back = useNavigate()
   useEffect(()=>{
     API.getItem(names).then((res)=>setData(res.data[0]))
-  },[names])
+  },[names])  
 
 
   // console.log(data.data);

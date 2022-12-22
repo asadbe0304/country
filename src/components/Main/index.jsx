@@ -12,35 +12,31 @@ const index = () => {
   const [data, setData] = useState([]);
   const [sorts, setSort] = useState([]);
   // const [search, setSearch]=useState('')
-   const [loading, setLoad] = useState(false);
-
-
+  const [loading, setLoad] = useState(false);
 
   useEffect(() => {
-
-
     API.getAll().then((result) => {
       setData(result.data);
       if (result.data) {
         setLoad(true);
 
-        result.data.forEach((e)=>{
-          if(!sorts.includes(e.region)){
-        sorts.push(e.region)
-        setSort(sorts)
+        result.data.forEach((e) => {
+          if (!sorts.includes(e.region)) {
+            sorts.push(e.region);
+            setSort(sorts);
           }
-        })
+        });
       }
     });
   }, []);
 
-const filterCountry = (country)=>{
-  API.filterCountry(country).then((result)=> setData(result.data))
-}
+  const filterCountry = (country) => {
+    API.filterCountry(country).then((result) => setData(result.data));
+  };
 
-const searchByName = (text)=>{
-  API.searchByName(text).then((result)=> setData(result.data))
-}
+  const searchByName = (text) => {
+    API.searchByName(text).then((result) => setData(result.data));
+  };
 
   if (!loading) {
     return (
@@ -75,28 +71,29 @@ const searchByName = (text)=>{
                   type="text"
                   className="input"
                   // value={search}
-                  onChange={(e)=>{
+                  onChange={(e) => {
                     // setSearch(e.target.value)
-                    searchByName(e.target.value)
+                    searchByName(e.target.value);
                   }}
                   placeholder="Search for a country…"
                 />
               </label>
-              <select className="drop__inner" onChange={(e)=>{
-                filterCountry(e.target.value)
-              }}>
+              <select
+                className="drop__inner"
+                onChange={(e) => {
+                  filterCountry(e.target.value);
+                }}
+              >
                 <option value="Filter" selected disabled>
                   Filter by Region
                 </option>
-                {
-                  sorts.sort().map((item)=>{
-                    return(
-                      <option key={item} value={item}>
-                        {item}
-                      </option>
-                    );
-                  })
-                }
+                {sorts.sort().map((item) => {
+                  return (
+                    <option key={item} value={item}>
+                      {item}
+                    </option>
+                  );
+                })}
               </select>
             </div>
             <div className="hero__bottom">

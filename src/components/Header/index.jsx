@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "./../../assets/icon.svg";
-import Sun from "./../../assets/Group 3.svg"
+import Sun from "./../../assets/Group 3.svg";
 import { useState, useEffect } from "react";
 
 import "./style.scss";
@@ -28,10 +28,9 @@ const index = () => {
             </a>
             <div className="dark__mode" onClick={toggleTheme}>
               <img
-                className="icon"
-                src={Sun}
-                alt="icon"
-              />
+              className="icon" 
+              src={Sun} 
+              alt="icon" />
               Dark
             </div>
           </div>
@@ -41,4 +40,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default index
